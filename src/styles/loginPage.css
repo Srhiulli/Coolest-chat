@@ -1,0 +1,145 @@
+
+body {
+    background-image: linear-gradient(to right top, #a48efa, #9f7cffea, #9f7cfff3, #9f7cfff7, #9f7cff);
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 4%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+.login-form {
+    height: 82vh;
+    flex-grow: 1;
+    flex-shrink: 0;
+    box-shadow: -12px 10px 20px rgba(0, 0, 0, 0.128);
+    border-radius: 8px;
+    padding: 1rem;
+    box-sizing: border-box;
+    max-width: 300px;
+    text-align: start;
+    background-color: white;
+    z-index: 1;
+}
+
+.login-form h1 {
+    margin-top: 10rem; 
+    margin-bottom: -1rem;
+    font-size: 2.5em; 
+}
+
+.login-form h3 {
+    margin-bottom: 2rem; 
+    font-weight: 200;
+}
+
+.login-form p{
+    margin-bottom: 0.5rem; 
+    margin-top: 2rem; 
+    font-size: small;
+}
+
+.form-group {
+    text-align: start;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem 0;
+    border: none; 
+    border-bottom: 1px solid #ccc; 
+    border-radius: 0; 
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    outline: none;
+    background-color: transparent;
+}
+input:focus {
+    border-bottom-color: #885efc; 
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #885efc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    
+}
+
+button:hover {
+    background-color: #6a4abc;
+}
+
+.error-message {
+    color: red;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+
+.loginElements {
+    flex-grow: 2;
+    height: 82vh;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 20px 12px 52px rgba(0, 0, 0, 0.181);
+    padding-top: 4rem;
+    padding-left: 4rem;
+    overflow: hidden;
+    text-align: start;
+    position: relative;
+   
+}
+.imageLogin{
+    height: 40rem;
+    background-image: url('../assets/clictochat-e1620817319308.webp');
+    border-top-right-radius: 8px;
+    z-index: 0
+}
+
+
+.loginElements h1 {
+    margin-top: 2rem;
+    margin-bottom: -2rem;
+    font-size: 3em;
+    font-weight: bolder;
+}
+.loginElements h3 {
+    margin-bottom:2rem; 
+    font-size: 2.5em; 
+    font-weight: 200;
+}
+.loginElements p {
+    margin-bottom: 2rem;
+    font-size: 1.2em;
+    font-weight: 100;
+}
