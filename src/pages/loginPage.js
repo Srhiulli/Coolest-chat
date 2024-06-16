@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import { useHistory } from 'react-router-dom';
 // import { supabase } from '../../services/supabaseClient';
 import '../styles/loginPage.css';
+import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -30,6 +31,7 @@ const LoginPage = () => {
                         placeholder='Email'
                         value={email}
                         data-cy="input-lg-email"
+                        onChange={(e) => setEmail(e.target.value)}
                         autoComplete='email'
                         required
                         input />
