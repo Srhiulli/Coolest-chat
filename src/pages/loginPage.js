@@ -37,7 +37,6 @@ const LoginPage = () => {
                         data-cy="input-lg-email"
                         onChange={(e) => setEmail(e.target.value)}
                         autoComplete='email'
-                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </div>
@@ -51,6 +50,7 @@ const LoginPage = () => {
                         data-cy="input-lg-password"
                         autoComplete='password'
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
                 </div>
                 <p>Forgot password?</p>
