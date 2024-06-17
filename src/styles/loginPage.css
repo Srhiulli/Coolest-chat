@@ -17,7 +17,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     padding: 4%;
     height: 100%;
     box-sizing: border-box;
@@ -32,7 +32,8 @@ body {
     border-radius: 8px;
     padding: 3rem;
     box-sizing: border-box;
-    max-width: 300px;
+    max-width: 600px;
+    min-width:200px;
     text-align: start;
     background-color: white;
     z-index: 1;
