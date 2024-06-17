@@ -37,7 +37,7 @@ const LoginPage = () => {
                         data-cy="input-lg-email"
                         onChange={(e) => setEmail(e.target.value)}
                         autoComplete='email'
-                        onChange={(e) => setEmail(e.target.value)} // Corrigido para atualizar o estado
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </div>
@@ -45,13 +45,12 @@ const LoginPage = () => {
                     <label htmlFor="password"></label>
                     <input
                         type="password"
-                        id="password" // Adicionado um ID para o campo senha
+                        id="password" 
                         placeholder='Password'
                         value={password}
                         data-cy="input-lg-password"
                         autoComplete='password'
-                        onChange={(e) => setPassword(e.target.value)} // Corrigido para atualizar o estado
-                        required
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <p>Forgot password?</p>

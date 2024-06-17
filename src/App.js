@@ -1,25 +1,22 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import { AuthProvider } from './contexts/AuthContext';
-import LoginPage from './pages/loginPage';
-// import SignUpPage from './pages/SignUpPage';
+import { BrowserRouter as Router, Routes, Route, Link, } from "react-router-dom"; import LoginPage from './pages/loginPage';
+// import SignupPage from './pages/signupPage';
 // import ChatPage from './pages/ChatPage';
-// import PrivateRoute from './components/Auth/PrivateRoute';
-// import './styles/App.css';
+// import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
   return (
-    // <Router>
-    //   <AuthProvider>
-    //     <Switch>
-      <LoginPage />
-          // <Route path="/login" component={LoginPage} />
-    //       <Route path="/signup" component={SignUpPage} />
-    //       <PrivateRoute path="/chat" component={ChatPage} />
-    //       <Route path="/" component={LoginPage} />
-    //     </Switch>
-    //   </AuthProvider>
-    // </Router>
+<Router>
+<LoginPage />
+{/* 
+{ <Link to='/signup'>signup</Link> }
+{ <Routes> 
+}
+  { <Route path='/signup' element={<signupPage />} /> 
+}
+
+{ </Routes> } */}
+</Router>
   );
 };
 
