@@ -1,0 +1,38 @@
+.btn-wrapper{
+    display: flex;
+    justify-content: center;
+    gap: 4xp;
+    margin:4rem;
+}
+.btn-Google {
+    background-color: white;
+    border: none;
+    border-radius: 18px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.btn-Google:hover {
+    background-color: #f0f0f0;
+}
+.google-icon {
+    height: 24px;
+    width: 24px;
+    margin:0.2rem;
+}
+.btn-sumbit {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #885efc;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-sumbit:hover {
+    background-color: #6a4abc;
+}
