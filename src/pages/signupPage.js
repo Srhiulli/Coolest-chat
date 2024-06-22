@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 import '../styles/signupPage.css';
 import '../styles/Button.css';
-import LoginWithGoogle from '../components/Auth/Login'
+import LoginWithGoogle from '../components/Auth/LoginWithGoogle'
 
 const SignUpPage = () => {
     const [email, setEmail] = useState('');

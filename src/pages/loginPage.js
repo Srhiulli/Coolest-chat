@@ -3,7 +3,7 @@ import {supabase} from '../services/supabaseClient';
 import '../styles/loginPage.css';
 import '../styles/Button.css';
 import { setSelectionRange } from '@testing-library/user-event/dist/utils';
-import LoginWithGoogle from '../components/Auth/Login'
+import LoginWithGoogle from '../components/Auth/LoginWithGoogle'
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
