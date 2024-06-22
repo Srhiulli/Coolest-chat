@@ -25,3 +25,7 @@ yarn-error.log*
 
 # .gitignore
 /src/assets/googleusercontent.com.json
+
+
+# .gitignore
+build/
