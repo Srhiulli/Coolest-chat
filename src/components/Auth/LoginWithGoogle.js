@@ -1,9 +1,12 @@
-// src/components/LoginWithGoogle.js
 
 import React from 'react';
 import { supabase } from '../../services/supabaseClient';
+import { useNavigate } from 'react-router-dom';
+
 
 const LoginWithGoogle = () => {
+    const navigate = useNavigate();
+
     const handleLogin = async () => {
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
