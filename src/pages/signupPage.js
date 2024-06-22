@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 import '../styles/signupPage.css';
+import '../styles/Button.css';
+import LoginWithGoogle from '../components/Auth/Login'
 
 const SignUpPage = () => {
     const [email, setEmail] = useState('');
@@ -63,8 +65,9 @@ const SignUpPage = () => {
                     />
                 </div>
                 <p>Forgot password?</p>
-                <button type="submit">Sign Up</button>
+                <button className='btn-sumbit' type="submit">Sign Up</button>
                 {error && <p className="error-message">{error}</p>}
+                <LoginWithGoogle />
             </form>
         </div>
     );

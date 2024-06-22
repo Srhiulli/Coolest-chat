@@ -58,7 +58,7 @@ body {
     margin-bottom: 0.5rem; 
     margin-top: 2rem; 
     font-size: small;
-    text-align:start;
+    text-align:end;
 }
 label {
     display: block;
@@ -78,19 +78,6 @@ input {
 }
 input:focus {
     border-bottom-color: #885efc; 
-}
-button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #885efc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-button:hover {
-    background-color: #6a4abc;
 }
 .error-message {
     color: red;
