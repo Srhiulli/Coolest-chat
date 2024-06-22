@@ -1,32 +1,41 @@
 import React, { useState } from 'react';
-import {supabase} from '../services/supabaseClient'; 
-import '../styles/loginPage.css';
-import { setSelectionRange } from '@testing-library/user-event/dist/utils';
+import { supabase } from '../services/supabaseClient';
+import '../styles/signupPage.css';
 
-const LoginPage = () => {
+const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
-    const handleLogin = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
 
         setError(null);
 
-        try {
-            const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { error } = await supabase.auth.signUp({
+            email,
+            password,
+        });
 
-            error ? setError(error.message) : alert("Login successful!");
-        } catch (err) {
-            setError(err.message || 'An unexpected error occurred.');
+        if (error) {
+            setError(error.message);
+        } else {
+            alert("Sign up successful!");
+            // Redirecionar ou fazer outras ações após o cadastro
         }
     };
 
     return (
         <div className="wrapper">
-            <form onSubmit={handleLogin} className="login-form">
-                <h1>Login</h1>
-                <h3>Enter your account details</h3>
+            <div className='SignupElements'>
+                <h1>You are about to</h1>
+                <h3>chat into coolest chat portal</h3>
+                <p>Signup to connect with your cool community</p>
+                <div className='imageLogin'></div>
+            </div>
+            <form onSubmit={handleSignUp} className="signup-form">
+                <h1>Sign Up</h1>
+                <h3>Create your account</h3>
                 <div className="form-group">
                     <label htmlFor="email"></label>
                     <input
@@ -44,7 +53,7 @@ const LoginPage = () => {
                     <label htmlFor="password"></label>
                     <input
                         type="password"
-                        id="password" 
+                        id="password"
                         placeholder='Password'
                         value={password}
                         data-cy="input-lg-password"
@@ -54,18 +63,11 @@ const LoginPage = () => {
                     />
                 </div>
                 <p>Forgot password?</p>
-                <button type="submit">Login</button>
+                <button type="submit">Sign Up</button>
                 {error && <p className="error-message">{error}</p>}
             </form>
-
-            <div className='loginElements'>
-                <h1>Welcome to</h1>
-                <h3>the coolest chat portal</h3>
-                <p>Login to connect with your cool community</p>
-                <div className='imageLogin'></div>
-            </div>
         </div>
     );
 };
 
-export default LoginPage;
+export default SignUpPage;
