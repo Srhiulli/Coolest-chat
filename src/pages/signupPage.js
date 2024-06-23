@@ -2,28 +2,52 @@ import React, { useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 import '../styles/signupPage.css';
 import '../styles/Button.css';
-import LoginWithGoogle from '../components/Auth/LoginWithGoogle'
+import LoginWithGoogle from '../components/Auth/LoginWithGoogle';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpPage = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-
         setError(null);
 
-        const { error } = await supabase.auth.signUp({
-            email,
-            password,
-        });
+        try {
+            // NOTE: mover para outro lugar
+            const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+            if (sessionError) throw sessionError;
 
-        if (error) {
-            setError(error.message);
-        } else {
-            alert("Sign up successful!");
-            // Redirecionar ou fazer outras ações após o cadastro
+            if (sessionData?.session?.user) {
+                console.log('Usuário já está logado:', sessionData.session.user);
+                navigate('/chat'); // Redireciona para /chat se o usuário já estiver logado
+                return;
+            }
+
+            // Tentativa de inscrição com email e senha
+            const { data, error: signUpError } = await supabase.auth.signUp({
+                email,
+                password
+            });
+
+            if (signUpError) {
+                throw signUpError; // Se ocorrer um erro, lança a exceção para ser tratada pelo catch
+            }
+
+            const user = data.user;
+
+            if (user) {
+                alert('Inscrição realizada com sucesso! Por favor, verifique seu email.');
+                setEmail('');
+                setPassword('');
+                navigate('/chat');
+            } else {
+                setError('Erro ao criar conta.'); 
+            }
+        } catch (err) {
+            setError(err.message || 'Ocorreu um erro inesperado.');
         }
     };
 

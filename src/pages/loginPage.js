@@ -1,26 +1,53 @@
 import React, { useState } from 'react';
-import {supabase} from '../services/supabaseClient'; 
+import { supabase } from '../services/supabaseClient';
 import '../styles/loginPage.css';
 import '../styles/Button.css';
-import { setSelectionRange } from '@testing-library/user-event/dist/utils';
-import LoginWithGoogle from '../components/Auth/LoginWithGoogle'
+import LoginWithGoogle from '../components/Auth/LoginWithGoogle';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
         setError(null);
 
         try {
-            const { error } = await supabase.auth.signInWithPassword({ email, password });
+            // Verifica se já existe um usuário autenticado
+            const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+            if (sessionError) throw sessionError;
 
-            error ? setError(error.message) : alert("Login successful!");
+            if (sessionData?.session?.user) {
+                console.log('Usuário já está logado:', sessionData.session.user);
+                navigate('/chat'); // Redireciona para /chat se o usuário já estiver logado
+                return;
+            }
+
+            // Tentativa de login com email e senha
+            const { data, error: signInError } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
+
+            if (signInError) {
+                alert('Crie uma conta');
+            }
+
+            const user = data.user;
+
+            if (user) {
+                alert('Login realizado com sucesso!');
+                setEmail('');
+                setPassword('');
+                navigate('/chat'); // Redireciona para /chat após o login
+            } else {
+                setError('Credenciais inválidas.'); // Mensagem genérica para falhas
+            }
         } catch (err) {
-            setError(err.message || 'An unexpected error occurred.');
+            setError(err.message || 'Ocorreu um erro inesperado.');
         }
     };
 
@@ -46,7 +73,7 @@ const LoginPage = () => {
                     <label htmlFor="password"></label>
                     <input
                         type="password"
-                        id="password" 
+                        id="password"
                         placeholder='Password'
                         value={password}
                         data-cy="input-lg-password"
@@ -58,7 +85,7 @@ const LoginPage = () => {
                 <p>Forgot password?</p>
                 <button className='btn-sumbit' type="submit">Login</button>
                 {error && <p className="error-message">{error}</p>}
-                <LoginWithGoogle/>
+                <LoginWithGoogle />
             </form>
 
             <div className='loginElements'>
