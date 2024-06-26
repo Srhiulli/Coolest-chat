@@ -21,6 +21,8 @@ body {
     position: relative;
     animation: slide-in 1s ease-out forwards;
     opacity: 0;
+    width: 100vw;
+
 }
 @keyframes slide-in {
     from {
@@ -44,6 +46,8 @@ body {
     text-align: center;
     background-color: white;
     z-index: 1;
+    align-content: space-around;
+
 }
 .login-form h1 {
     margin-top: 10rem; 
@@ -53,6 +57,7 @@ body {
 .login-form h3 {
     margin-bottom: 2rem; 
     font-weight: 200;
+    margin-top: 2rem;
 }
 .login-form p{
     margin-bottom: 0.5rem; 
@@ -96,6 +101,8 @@ input:focus {
     overflow: hidden;
     text-align: end;
     position: relative;
+    align-content: space-around;
+
    
 }
 .imageLogin{
@@ -116,6 +123,8 @@ input:focus {
     font-size: 2.5em; 
     font-weight: 200;
     padding-right: 4rem;
+    margin-top: 2rem;
+
 }
 .loginElements p {
     margin-bottom: 2rem;
